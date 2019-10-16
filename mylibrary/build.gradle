@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.LoveMeAreYouaFraid'
 android {
     compileSdkVersion 29
     buildToolsVersion '28.0.3'
@@ -24,8 +25,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = "1.8"
-        targetCompatibility = 1.8
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 
 }
