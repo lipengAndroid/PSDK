@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#1B0C32</color>
+
+    <color name="titleColorBG">#009cff</color>
+    <!--clock-->
+    <color name="title_transparent_black">#22000000</color>
+    <color name="light_black">#141414</color>
+    <color name="line_and_outline_grey">#d9d9d9</color>
+    <color name="color_write">#ffffff</color>
+    <color name="white">#ffffff</color>
+
+    <color name="black">#000000</color>
+
+    <color name="black_33">#666666</color>
+
+    <color name="color_rad">#e90707</color>
+
+    <color name="hui">#f5f5f5</color>
+    <color name="gray_cfcfcf">#cfcfcf</color>
+    <color name="orange_ffc032">#ffc032</color>
+    <color name="black_3A3D4E">#3A3D4E</color>
+    <color name="black_475B80">#475B80</color>
+
+    <color name="dev_bg_hui_ck">#DFDFDF</color>
+
+    <color name="line">#F0F2F5</color>
+    <color name="bg_new">#9478c3</color>
+    <color name="life_lay_blue">#47C4FC</color>
+    <color name="home_bar">#06233e</color>
+    <color name="home_bar_ck">#9906233e</color>
+    <color name="app_style">#1B0C32</color>
+
+    <color name="txt_zi">#CB93FF</color>
+
+</resources>
