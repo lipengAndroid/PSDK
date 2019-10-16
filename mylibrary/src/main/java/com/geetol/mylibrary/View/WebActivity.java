@@ -16,6 +16,8 @@ import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.StatusBarCompat;
 import com.geetol.mylibrary.Entity.KEY;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 
 public class WebActivity extends AppCompatActivity {
 
@@ -24,6 +26,7 @@ public class WebActivity extends AppCompatActivity {
     public static void start(Context context, String uri, String title) {
         context.startActivity(new Intent(context, WebActivity.class)
                 .putExtra(KEY.URI, uri)
+                .setFlags(FLAG_ACTIVITY_NEW_TASK)
                 .putExtra(KEY.TITLE, title));
     }
 
