@@ -2,6 +2,5 @@
     package="com.geetol.mylibrary" >
 
     <application>
-        <activity android:name=".View.WebActivity" />
     </application>
 </manifest>
