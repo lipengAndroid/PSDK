@@ -3,7 +3,7 @@ package com.geetol.mylibrary.Entity;
 public class KEY {
     public final static String LANGUAGE = "LANGUAGE";
 
-    public static final String TOKEN = "TOKEN";
+    public static final String TOKEN = "TOKEN";//asa
 
     public static final String MAIN = "main";
 
