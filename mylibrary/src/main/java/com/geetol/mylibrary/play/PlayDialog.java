@@ -232,8 +232,6 @@ public class PlayDialog {
                     if (playOk != null) {
                         playOk.ok();
                     }
-
-//                    VipPayActivity.this.finish();
                 }
             }
 
