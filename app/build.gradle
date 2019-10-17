@@ -8,9 +8,9 @@ android {
             flatDir {
                 dirs project(':app').file('libs')
             }
-            flatDir {
-                dirs 'libs', '../mylibrary/libs'
-            }
+//            flatDir {
+//                dirs 'libs', '../mylibrary/libs'
+//            }
 
         }
     defaultConfig {
