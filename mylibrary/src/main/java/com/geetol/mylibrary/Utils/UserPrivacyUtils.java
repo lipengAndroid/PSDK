@@ -5,6 +5,7 @@ import android.app.Activity;
 
 import androidx.annotation.LayoutRes;
 
+import com.geetol.mylibrary.Dialog.DefDialog;
 import com.geetol.mylibrary.Dialog.DunJiaDialog;
 import com.geetol.mylibrary.Dialog.GTXXDialog;
 import com.geetol.mylibrary.Dialog.HengHaDialog;
@@ -70,6 +71,10 @@ public class UserPrivacyUtils implements DialogInterFaceForAgreement {
                     break;
                 case "com.gtdev5.app_lock"://未找到公司
                 case "com.geetol.passwordmanage":
+                    new DefDialog(this).show();
+                    break;
+                default:
+                    new DefDialog(this).show();
                     break;
 
             }
