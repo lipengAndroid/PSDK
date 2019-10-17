@@ -3,14 +3,16 @@ package com.geetol.mylibrary.Utils;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 
+import androidx.annotation.LayoutRes;
+
 import com.geetol.mylibrary.Dialog.DunJiaDialog;
 import com.geetol.mylibrary.Dialog.GTXXDialog;
 import com.geetol.mylibrary.Dialog.HengHaDialog;
 import com.geetol.mylibrary.Dialog.JRYDialog;
+import com.geetol.mylibrary.Dialog.PubDialog;
 import com.geetol.mylibrary.Dialog.QingQuanDialog;
 import com.geetol.mylibrary.Dialog.ZiYiDialog;
 import com.geetol.mylibrary.InterFace.DialogInterFaceForAgreement;
-import com.gtdev5.geetolsdk.mylibrary.beans.UpdateBean;
 import com.gtdev5.geetolsdk.mylibrary.util.SpUtils;
 
 import static com.geetol.mylibrary.Entity.KEY.ONE_START;
@@ -23,6 +25,13 @@ public class UserPrivacyUtils implements DialogInterFaceForAgreement {
     @SuppressLint("StaticFieldLeak")
     public static Activity activity;
     private RegUtils.RegUtilsOk face;
+
+
+    public UserPrivacyUtils show(@LayoutRes int lays, String usr, String ys, DialogInterFaceForAgreement listener) {
+        new PubDialog(lays, usr, ys, listener).show();
+        return this;
+    }
+
 
     public void show(Activity a, RegUtils.RegUtilsOk f) {
         face = f;
