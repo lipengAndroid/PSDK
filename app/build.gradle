@@ -3,16 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
-    allprojects {
-        repositories {
-//            flatDir {
-//                dirs project(':app').file('libs')
-//            }
-//            flatDir {
-//                dirs 'libs', '../mylibrary/libs'
-//            }
-
-        }
     defaultConfig {
         applicationId "com.geetol.myapplication"
         minSdkVersion 19
@@ -31,12 +21,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation project(path: ':mylibrary')
-//    implementation project(':mylibrary')
-
-}}
+    implementation project(path: ':mylibrary')
+}
