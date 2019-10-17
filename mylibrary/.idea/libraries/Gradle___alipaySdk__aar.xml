@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: :alipaySdk:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/08a84c1bb1b557a9841a34e46f2a2225/alipaySdk/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/08a84c1bb1b557a9841a34e46f2a2225/alipaySdk/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

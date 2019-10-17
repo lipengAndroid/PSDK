@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Zeoye:GeeSDK:4.2.7@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acb9f4dd4a183519b09a7c6ea25c796a/jetified-GeeSDK-4.2.7/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acb9f4dd4a183519b09a7c6ea25c796a/jetified-GeeSDK-4.2.7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acb9f4dd4a183519b09a7c6ea25c796a/jetified-GeeSDK-4.2.7/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Zeoye/GeeSDK/4.2.7/f0042bdb5135b99ce673ecbc860de6ce0c980f4e/GeeSDK-4.2.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
