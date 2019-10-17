@@ -98,6 +98,9 @@ public class GtSdk {
             case "com.geetol.sleep"://集拓信息
                 api = "xinxi.gtxinxi.cn";
                 break;
+            default:
+                api = "app.wm002.cn";
+                break;
 
 
         }
