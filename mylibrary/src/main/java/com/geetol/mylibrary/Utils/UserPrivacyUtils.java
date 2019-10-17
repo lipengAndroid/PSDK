@@ -1,5 +1,6 @@
 package com.geetol.mylibrary.Utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 
 import com.geetol.mylibrary.Dialog.DunJiaDialog;
@@ -9,15 +10,17 @@ import com.geetol.mylibrary.Dialog.JRYDialog;
 import com.geetol.mylibrary.Dialog.QingQuanDialog;
 import com.geetol.mylibrary.Dialog.ZiYiDialog;
 import com.geetol.mylibrary.InterFace.DialogInterFaceForAgreement;
+import com.gtdev5.geetolsdk.mylibrary.beans.UpdateBean;
 import com.gtdev5.geetolsdk.mylibrary.util.SpUtils;
 
 import static com.geetol.mylibrary.Entity.KEY.ONE_START;
 
 /**
- * 用户协议 隐私政策弹窗 工具类111111
+ * 用户协议 隐私政策弹窗 工具类
  */
 public class UserPrivacyUtils implements DialogInterFaceForAgreement {
 
+    @SuppressLint("StaticFieldLeak")
     public static Activity activity;
     private RegUtils.RegUtilsOk face;
 

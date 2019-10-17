@@ -15,7 +15,6 @@ import com.gtdev5.geetolsdk.mylibrary.beans.UpdateBean;
 import com.gtdev5.geetolsdk.mylibrary.callback.BaseCallback;
 import com.gtdev5.geetolsdk.mylibrary.http.HttpUtils;
 import com.gtdev5.geetolsdk.mylibrary.util.PermissionUtils;
-import com.gtdev5.geetolsdk.mylibrary.util.SpUtils;
 import com.gtdev5.geetolsdk.mylibrary.util.ToastUtils;
 import com.gtdev5.geetolsdk.mylibrary.util.Utils;
 
@@ -53,7 +52,7 @@ public class RegUtils {
 
     public void run(RegUtilsOk regUtilsOk) {
         this.regUtilsOk = regUtilsOk;
-        oneStart = TextUtils.isEmpty(SpUtils.getInstance().getString(KEY.ONE_START, ""));
+        oneStart = TextUtils.isEmpty(PreferencesUtil.getString(KEY.ONE_START, ""));
         initDatas();
     }
 
