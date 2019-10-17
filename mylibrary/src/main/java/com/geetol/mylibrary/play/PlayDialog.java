@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
 
+import androidx.annotation.LayoutRes;
 import androidx.databinding.DataBindingUtil;
 
 import com.alipay.sdk.app.PayTask;
@@ -16,6 +17,7 @@ import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.TalenHttpUtils;
 import com.geetol.mylibrary.databinding.WxAliDialogBinding;
 import com.gtdev5.geetolsdk.mylibrary.beans.ApliyBean;
+import com.gtdev5.geetolsdk.mylibrary.beans.OdResultBean;
 import com.gtdev5.geetolsdk.mylibrary.beans.PayResult;
 import com.gtdev5.geetolsdk.mylibrary.beans.UpdateBean;
 import com.gtdev5.geetolsdk.mylibrary.callback.BaseCallback;
@@ -38,6 +40,18 @@ public class PlayDialog {
         void ok();
     }
 
+    @LayoutRes
+    private int lay;
+
+    /**
+     * id 必须有是ali 和wx
+     *
+     * @param lays
+     */
+    public PlayDialog(int lays) {
+        lay = lays;
+    }
+
     private PlayOkInterface playOk;
 
     public void show(Activity context, int vipId, PlayOkInterface playOk) {
@@ -47,21 +61,20 @@ public class PlayDialog {
                 AppDataModel.getInstance().getGds().size() > 0) {
 
             if (AppDataModel.getInstance().getGds().get(0).getPayway().equals("[1]")) {//微信
-                wxPlay(context);
+                wxPlay(context, vipId);
             } else if (AppDataModel.getInstance().getGds().get(0).getPayway().equals("[2]")) {//支付宝
                 pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context);
             } else if (AppDataModel.getInstance().getGds().get(0).getPayway().contains("[1]")
                     && AppDataModel.getInstance().getGds().get(0).getPayway().contains("[2]")) {
                 Dialog dialog = new Dialog(context, R.style.dialog_custom);
-                WxAliDialogBinding view = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.wx_ali_dialog, null, false);
-                dialog.setContentView(view.getRoot());
+                dialog.setContentView(lay);
                 Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
 
                 WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
                 layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
                 dialog.getWindow().setAttributes(layoutParams);
-                view.ali.setOnClickListener(v -> pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context));
-                view.wx.setOnClickListener(v -> wxPlay(context));
+                dialog.findViewById(R.id.ali).setOnClickListener(v -> pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context));
+                dialog.findViewById(R.id.wx).setOnClickListener(v -> wxPlay(context, vipId));
                 dialog.show();
 
             }
@@ -70,55 +83,55 @@ public class PlayDialog {
         }
     }
 
-    private void wxPlay(Activity context) {
+    private void wxPlay(Activity context, int vipId) {
 
-        final IWXAPI msgApi = WXAPIFactory.createWXAPI(context, "wxd930ea5d5a258f4f");
-        PayReq request = new PayReq();
-        request.appId = "wxd930ea5d5a258f4f";
-        request.partnerId = "1900000109";
-        request.prepayId = "1101000000140415649af9fc314aa427";
-        request.packageValue = "Sign=WXPay";
-        request.nonceStr = "1101000000140429eb40476f8896f4c9";
-        request.timeStamp = "1398746574";
-        request.sign = "7FFECB600D7157C5AA49810D2D8F28BC2811827B";
-        msgApi.sendReq(request);
-//        HttpUtils.getInstance().PostOdOrder(1, model.getGds().get(0).getGid(), 0, 1, new BaseCallback<OdResultBean>() {
-//            @Override
-//            public void onRequestBefore() {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Request request, Exception e) {
-//
-//            }
-//
-//            @Override
-//            public void onSuccess(Response response, OdResultBean o) {
-//                if (o != null && !o.isIssucc()) {
-//                    ToastUtils.showShortToast(o.getMsg());
-//                    return;
-//                }
-//                IWXAPI api = WXAPIFactory.createWXAPI(context, o.getAppid(), false);
-//                api.registerApp(o.getAppid());//填写自己的APPID，注册本身APP
-//                PayReq req = new PayReq();//PayReq就是订单信息对象//给req对象赋值
-//                req.appId = o.getAppid();//APPID
-//                req.partnerId = o.getPartnerId();//商户号
-//                req.prepayId = o.getPrepayid();  //预订单id
-//                req.nonceStr = o.getNonce_str();//随机数
-//                req.timeStamp = o.getTimestramp();//时间戳
-//                req.packageValue = o.getPackage_str();//固定值Sign=WXPay
-//                req.sign = o.getSign();//签名
-//                //Log.e("zeoy","服务器签名字符串："+o.getSign());
-//                api.sendReq(req);//将订单信息对象发送给微信服务器，即发送支付请求
-//
-//            }
-//
-//            @Override
-//            public void onError(Response response, int errorCode, Exception e) {
-//
-//            }
-//        });
+//        final IWXAPI msgApi = WXAPIFactory.createWXAPI(context, "wxd930ea5d5a258f4f");
+//        PayReq request = new PayReq();
+//        request.appId = "wxd930ea5d5a258f4f";
+//        request.partnerId = "1900000109";
+//        request.prepayId = "1101000000140415649af9fc314aa427";
+//        request.packageValue = "Sign=WXPay";
+//        request.nonceStr = "1101000000140429eb40476f8896f4c9";
+//        request.timeStamp = "1398746574";
+//        request.sign = "7FFECB600D7157C5AA49810D2D8F28BC2811827B";
+//        msgApi.sendReq(request);
+        HttpUtils.getInstance().PostOdOrder(1, AppDataModel.getInstance().getGds().get(vipId).getGid(), 0, 1, new BaseCallback<OdResultBean>() {
+            @Override
+            public void onRequestBefore() {
+
+            }
+
+            @Override
+            public void onFailure(Request request, Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Response response, OdResultBean o) {
+                if (o != null && !o.isIssucc()) {
+                    ToastUtils.showShortToast(o.getMsg());
+                    return;
+                }
+                IWXAPI api = WXAPIFactory.createWXAPI(context, o.getAppid(), false);
+                api.registerApp(o.getAppid());//填写自己的APPID，注册本身APP
+                PayReq req = new PayReq();//PayReq就是订单信息对象//给req对象赋值
+                req.appId = o.getAppid();//APPID
+                req.partnerId = o.getPartnerId();//商户号
+                req.prepayId = o.getPrepayid();  //预订单id
+                req.nonceStr = o.getNonce_str();//随机数
+                req.timeStamp = o.getTimestramp();//时间戳
+                req.packageValue = o.getPackage_str();//固定值Sign=WXPay
+                req.sign = o.getSign();//签名
+                //Log.e("zeoy","服务器签名字符串："+o.getSign());
+                api.sendReq(req);//将订单信息对象发送给微信服务器，即发送支付请求
+
+            }
+
+            @Override
+            public void onError(Response response, int errorCode, Exception e) {
+
+            }
+        });
 
 
     }
