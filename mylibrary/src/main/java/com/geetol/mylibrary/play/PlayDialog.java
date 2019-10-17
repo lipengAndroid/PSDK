@@ -16,7 +16,6 @@ import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.TalenHttpUtils;
 import com.geetol.mylibrary.databinding.WxAliDialogBinding;
 import com.gtdev5.geetolsdk.mylibrary.beans.ApliyBean;
-import com.gtdev5.geetolsdk.mylibrary.beans.OdResultBean;
 import com.gtdev5.geetolsdk.mylibrary.beans.PayResult;
 import com.gtdev5.geetolsdk.mylibrary.beans.UpdateBean;
 import com.gtdev5.geetolsdk.mylibrary.callback.BaseCallback;
@@ -48,7 +47,7 @@ public class PlayDialog {
                 AppDataModel.getInstance().getGds().size() > 0) {
 
             if (AppDataModel.getInstance().getGds().get(0).getPayway().equals("[1]")) {//微信
-                wxPlay(AppDataModel.getInstance(), context);
+                wxPlay(context);
             } else if (AppDataModel.getInstance().getGds().get(0).getPayway().equals("[2]")) {//支付宝
                 pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context);
             } else if (AppDataModel.getInstance().getGds().get(0).getPayway().contains("[1]")
@@ -62,7 +61,7 @@ public class PlayDialog {
                 layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
                 dialog.getWindow().setAttributes(layoutParams);
                 view.ali.setOnClickListener(v -> pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context));
-                view.wx.setOnClickListener(v -> wxPlay(AppDataModel.getInstance(), context));
+                view.wx.setOnClickListener(v -> wxPlay(context));
                 dialog.show();
 
             }
@@ -71,7 +70,7 @@ public class PlayDialog {
         }
     }
 
-    private void wxPlay(AppDataModel model, Activity context) {
+    private void wxPlay(Activity context) {
 
         final IWXAPI msgApi = WXAPIFactory.createWXAPI(context, "wxd930ea5d5a258f4f");
         PayReq request = new PayReq();
@@ -159,7 +158,7 @@ public class PlayDialog {
                                 Map<String, String> map = alipay.payV2(apliyBean.getPackage_str(), true);
                                 Message msg = new Message();
                                 msg.what = SDK_PAY_FLAG;
-                                msg.obj = map;
+                                payResult = new PayResult(map);
                                 mHandler.sendMessage(msg);
                             };
 
@@ -179,10 +178,10 @@ public class PlayDialog {
         }
     }
 
+    private PayResult payResult;
+
     private Handler mHandler = new Handler(message -> {
         if (message.what == SDK_PAY_FLAG) {
-            PayResult payResult;
-            payResult = new PayResult((Map<String, String>) message.obj);
             switch (payResult.getResultStatus()) {
                 case "9000":
                     upData();
