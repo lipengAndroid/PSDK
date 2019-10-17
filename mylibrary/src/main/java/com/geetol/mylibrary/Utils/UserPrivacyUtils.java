@@ -27,11 +27,17 @@ public class UserPrivacyUtils implements DialogInterFaceForAgreement {
     private RegUtils.RegUtilsOk face;
 
 
-    public UserPrivacyUtils show(@LayoutRes int lays, String usr, String ys, DialogInterFaceForAgreement listener) {
-        new PubDialog(lays, usr, ys, listener).show();
-        return this;
-    }
+    public void show(Activity a, @LayoutRes int lays, String usr, String ys, RegUtils.RegUtilsOk f) {
 
+        face = f;
+        activity = a;
+        RegUtils.init(a);
+        if (!SpUtils.getInstance().getString(ONE_START).equals("")) {
+            RegUtils.getMy().run(face);
+        } else if (GtSdk.contexts != null) {
+            new PubDialog(lays, usr, ys, this);
+        }
+    }
 
     public void show(Activity a, RegUtils.RegUtilsOk f) {
         face = f;
