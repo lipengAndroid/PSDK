@@ -5,12 +5,12 @@ android {
     buildToolsVersion "29.0.2"
     allprojects {
         repositories {
-            flatDir {
-                dirs project(':app').file('libs')
-            }
-            flatDir {
-                dirs 'libs', '../mylibrary/libs'
-            }
+//            flatDir {
+//                dirs project(':app').file('libs')
+//            }
+//            flatDir {
+//                dirs 'libs', '../mylibrary/libs'
+//            }
 
         }
     defaultConfig {
@@ -36,7 +36,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':mylibrary')
-    implementation project(':mylibrary')
+//    implementation project(path: ':mylibrary')
+//    implementation project(':mylibrary')
 
 }}
