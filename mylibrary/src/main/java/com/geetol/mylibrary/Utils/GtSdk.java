@@ -9,6 +9,7 @@ public class GtSdk {
     public static Context contexts;
 
     public static String api = "";
+    public static String ys_user_address;
 
     public static void init(Context context) {
         switch (context.getPackageName()) {
@@ -25,6 +26,7 @@ public class GtSdk {
             case "com.geetol.fond.dream":
             case "com.dunjiakj.makename":
                 api = "duanjia.dunjiakj.com";
+                ys_user_address = "dj";
                 break;
 
             case " com.ziyi18.wxxh"://紫伊
@@ -37,6 +39,7 @@ public class GtSdk {
             case "com.ziyi18.geemakename":
 
                 api = "ziyi.ziyi18.com";
+                ys_user_address = "zy";
                 break;
 
             case "com.hjkj66.virtualapp"://海景
@@ -46,7 +49,7 @@ public class GtSdk {
             case "com.hjkj66.fakecall":
             case "com.gtdev5.zgjt":
             case "com.hjkj66.yjzf":
-
+                ys_user_address = "pub";
                 api = "haijing.hjkj66.com";
                 break;
             case "com.qqkj66.virtualapp"://清泉
@@ -58,6 +61,7 @@ public class GtSdk {
             case "com.qqkj66.easysleep":
             case "com.qqkj66.makename":
                 api = "qingquan.qqkj66.com";
+                ys_user_address = "qq";
                 break;
             case "com.junruy.virtualapp"://君如意
             case "com.junruy.we_king_of_funs":
@@ -70,7 +74,7 @@ public class GtSdk {
             case "com.junruy.cgfyj":
             case "com.junruy.makename":
 
-
+                ys_user_address = "jry";
                 api = "junruyi.junruy.com";
                 break;
 
@@ -84,7 +88,7 @@ public class GtSdk {
             case "com.hehax.thgs":
             case "com.hehax.cygs/com.hehax.cygsdq":
 
-
+                ys_user_address = "pub";
                 api = "heha.hehax.com";
                 break;
 
@@ -97,9 +101,11 @@ public class GtSdk {
                 break;
             case "com.geetol.sleep"://集拓信息
                 api = "xinxi.gtxinxi.cn";
+                ys_user_address = "gtxx";
                 break;
             default:
                 api = "app.wm002.cn";
+                ys_user_address = "pub";
                 break;
 
 
@@ -109,4 +115,6 @@ public class GtSdk {
         GeetolSDK.init(context, api);
         contexts = context;
     }
+
+
 }

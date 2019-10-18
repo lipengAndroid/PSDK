@@ -13,6 +13,8 @@ import com.geetol.mylibrary.Utils.TextViewParser;
 import com.geetol.mylibrary.Utils.UserPrivacyUtils;
 import com.geetol.mylibrary.View.WebActivity;
 
+import static com.geetol.mylibrary.Utils.GtSdk.ys_user_address;
+
 
 public abstract class TopImgDialog extends Dialog {
 
@@ -47,9 +49,9 @@ public abstract class TopImgDialog extends Dialog {
         textViewParser.setTxt("尊敬的用户欢迎使用" + GtSdk.contexts.getResources().getString(R.string.app_name)
                 + "\n在您使用前请仔细阅读", 14, "#333333");
 
-        textViewParser.setTxt("《注册协议》", 14, Color.parseColor("#018FFD"), v -> WebActivity.start(GtSdk.contexts, "file:///android_asset/dj_user.html", "注册协议"));
+        textViewParser.setTxt("《注册协议》", 14, Color.parseColor("#018FFD"), v -> WebActivity.start(GtSdk.contexts, "file:///android_asset/"+ys_user_address+"_user.html", "注册协议"));
         textViewParser.setTxt("和", 14, "#333333");
-        textViewParser.setTxt("《隐私政策》", 14, Color.parseColor("#018FFD"), v -> WebActivity.start(GtSdk.contexts, "file:///android_asset/dj_ys.html", "隐私政策"));
+        textViewParser.setTxt("《隐私政策》", 14, Color.parseColor("#018FFD"), v -> WebActivity.start(GtSdk.contexts, "file:///android_asset/"+ys_user_address+"_ys.html", "隐私政策"));
         textViewParser.setTxt("我们将严格遵守您同意的各项条款使用您的信息，以便为您提供更好的服务。", 14, "#333333");
 
 
