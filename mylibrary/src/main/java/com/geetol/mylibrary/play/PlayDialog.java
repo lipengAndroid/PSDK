@@ -15,7 +15,6 @@ import com.alipay.sdk.app.PayTask;
 import com.geetol.mylibrary.Entity.AppDataModel;
 import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.TalenHttpUtils;
-import com.geetol.mylibrary.databinding.WxAliDialogBinding;
 import com.gtdev5.geetolsdk.mylibrary.beans.ApliyBean;
 import com.gtdev5.geetolsdk.mylibrary.beans.OdResultBean;
 import com.gtdev5.geetolsdk.mylibrary.beans.PayResult;
@@ -60,12 +59,12 @@ public class PlayDialog {
                 AppDataModel.getInstance().getGds() != null &&
                 AppDataModel.getInstance().getGds().size() > 0) {
 
-            if (AppDataModel.getInstance().getGds().get(0).getPayway().equals("[1]")) {//微信
+            if (AppDataModel.getInstance().getGds().get(vipId).getPayway().equals("[1]")) {//微信
                 wxPlay(context, vipId);
-            } else if (AppDataModel.getInstance().getGds().get(0).getPayway().equals("[2]")) {//支付宝
+            } else if (AppDataModel.getInstance().getGds().get(vipId).getPayway().equals("[2]")) {//支付宝
                 pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context);
-            } else if (AppDataModel.getInstance().getGds().get(0).getPayway().contains("[1]")
-                    && AppDataModel.getInstance().getGds().get(0).getPayway().contains("[2]")) {
+            } else if (AppDataModel.getInstance().getGds().get(vipId).getPayway().contains("[1]")
+                    && AppDataModel.getInstance().getGds().get(vipId).getPayway().contains("[2]")) {
                 Dialog dialog = new Dialog(context, R.style.dialog_custom);
                 dialog.setContentView(lay);
                 Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
