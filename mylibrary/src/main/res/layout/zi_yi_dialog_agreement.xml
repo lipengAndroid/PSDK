@@ -4,7 +4,7 @@
     android:layout_width="260dp"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="13dp">
@@ -87,5 +87,5 @@
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

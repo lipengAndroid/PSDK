@@ -7,7 +7,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 
 import com.geetol.mylibrary.Entity.KEY;
 import com.gtdev5.geetolsdk.mylibrary.beans.ResultBean;
@@ -204,7 +203,7 @@ public class RegUtils {
         }
     }
 
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,  String[] permissions,  int[] grantResults) {
 
         boolean allOK = true;
         if (requestCode == RESULT_ACTION_USAGE_ACCESS_SETTINGS)

@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,15 @@ public class WebActivity extends AppCompatActivity {
 
     private TextView title;
     private WebView web;
+
+    public static void start(Context context, String uri, String title, int color) {
+        context.startActivity(new Intent(context, WebActivity.class)
+                .putExtra(KEY.URI, uri)
+                .setFlags(FLAG_ACTIVITY_NEW_TASK)
+                .putExtra(KEY.TITLE, title)
+                .putExtra(KEY.COLOR, color));
+    }
+
     public static void start(Context context, String uri, String title) {
         context.startActivity(new Intent(context, WebActivity.class)
                 .putExtra(KEY.URI, uri)
@@ -34,16 +44,22 @@ public class WebActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.web_activity);
-        title=  findViewById(R.id.title);
-        web=  findViewById(R.id.web);
+        title = findViewById(R.id.title);
+        web = findViewById(R.id.web);
         if (Build.VERSION.SDK_INT >= 19) {
-            StatusBarCompat.setStatusBarColor(this, Color.parseColor("#4288FB"));
+            StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.life_lay_blue));
         }
         if (getIntent().hasExtra(KEY.TITLE)) {
-            title .setText(getIntent().getStringExtra(KEY.TITLE));
+            title.setText(getIntent().getStringExtra(KEY.TITLE));
         }
         if (getIntent().hasExtra(KEY.URI)) {
             web.loadUrl(getIntent().getStringExtra(KEY.URI));
+        }
+        if (getIntent().hasExtra(KEY.COLOR)) {
+            title.setBackgroundResource(getIntent().getIntExtra(KEY.COLOR, R.color.life_lay_blue));
+            if (Build.VERSION.SDK_INT >= 19) {
+                StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.life_lay_blue));
+            }
         }
     }
 

@@ -14,6 +14,9 @@ import com.geetol.mylibrary.Utils.TextViewParser;
 import com.geetol.mylibrary.Utils.UserPrivacyUtils;
 import com.geetol.mylibrary.View.WebActivity;
 
+import static com.geetol.mylibrary.Utils.GtSdk.user_address_v;
+import static com.geetol.mylibrary.Utils.GtSdk.ys_address_v;
+
 /**
  * Created by ZL on 2019/9/25
  * <p>
@@ -42,9 +45,9 @@ public class GTXXDialog extends Dialog implements View.OnClickListener {
         TextViewParser textViewParser = new TextViewParser();
         textViewParser.setTxt("欢迎使用本软件，我们非常重视保护您的隐私和个人信息，在您—使用本软件之前，请认真阅读", 14, "#333333");
 
-        textViewParser.setTxt("《用户协议》", 14, Color.parseColor("#5cb412"), v -> WebActivity.start(GtSdk.contexts, "file:///android_asset/gtxx_user.html", "用户协议"));
+        textViewParser.setTxt("《用户协议》", 14, Color.parseColor("#5cb412"), v -> WebActivity.start(GtSdk.contexts, user_address_v, "用户协议"));
         textViewParser.setTxt("及", 14, "#333333");
-        textViewParser.setTxt("《隐私政策》", 14, Color.parseColor("#5cb412"), v -> WebActivity.start(GtSdk.contexts, "file:///android_asset/gtxx_ys.html", "隐私政策"));
+        textViewParser.setTxt("《隐私政策》", 14, Color.parseColor("#5cb412"), v -> WebActivity.start(GtSdk.contexts, ys_address_v, "隐私政策"));
         textViewParser.setTxt("您同意并接受全部条款后方可开始使用本软件", 14, "#333333");
 
         textViewParser.parse(findViewById(R.id.data));

@@ -23,6 +23,8 @@ public class KEY {
 
     public static final int REPLACE = 1111;//替换图片
 
+    public static final String COLOR = "COLOR";
+
     public static String alarmClockTimeH = "alarmClockTimeH";//闹钟时间 小时
 
     public static String alarmClockTimeM = "alarmClockTimeM";//闹钟时间 分钟

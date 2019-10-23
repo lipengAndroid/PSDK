@@ -8,13 +8,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
 
-import androidx.annotation.LayoutRes;
-import androidx.databinding.DataBindingUtil;
 
 import com.alipay.sdk.app.PayTask;
 import com.geetol.mylibrary.Entity.AppDataModel;
 import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.TalenHttpUtils;
+import com.geetol.mylibrary.databinding.WxAliDialogBinding;
 import com.gtdev5.geetolsdk.mylibrary.beans.ApliyBean;
 import com.gtdev5.geetolsdk.mylibrary.beans.OdResultBean;
 import com.gtdev5.geetolsdk.mylibrary.beans.PayResult;
@@ -39,7 +38,7 @@ public class PlayDialog {
         void ok();
     }
 
-    @LayoutRes
+
     private int lay;
 
     /**

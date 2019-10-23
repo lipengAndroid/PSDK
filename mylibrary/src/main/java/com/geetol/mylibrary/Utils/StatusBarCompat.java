@@ -6,8 +6,6 @@ import android.os.Build;
 import android.view.View;
 import android.view.Window;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
 
 
 /**
@@ -42,11 +40,11 @@ public class StatusBarCompat {
      * @param statusColor color
      * @param alpha       0 - 255
      */
-    public static void setStatusBarColor(@NonNull Activity activity, @ColorInt int statusColor, int alpha) {
+    public static void setStatusBarColor( Activity activity,  int statusColor, int alpha) {
         setStatusBarColor(activity, calculateStatusBarColor(statusColor, alpha));
     }
 
-    public static void setStatusBarColor(@NonNull Activity activity, @ColorInt int statusColor) {
+    public static void setStatusBarColor( Activity activity,  int statusColor) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             StatusBarCompatLollipop.setStatusBarColor(activity, statusColor);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -54,7 +52,7 @@ public class StatusBarCompat {
         }
     }
 
-    public static void translucentStatusBar(@NonNull Activity activity) {
+    public static void translucentStatusBar( Activity activity) {
         translucentStatusBar(activity, false);
     }
 
@@ -63,7 +61,7 @@ public class StatusBarCompat {
      *
      * @param hideStatusBarBackground hide status bar alpha Background when SDK > 21, true if hide it
      */
-    public static void translucentStatusBar(@NonNull Activity activity, boolean hideStatusBarBackground) {
+    public static void translucentStatusBar( Activity activity, boolean hideStatusBarBackground) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             StatusBarCompatLollipop.translucentStatusBar(activity, hideStatusBarBackground);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -72,7 +70,7 @@ public class StatusBarCompat {
     }
 
 
-    public static void changeToLightStatusBar(@NonNull Activity activity) {
+    public static void changeToLightStatusBar( Activity activity) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return;
         }
@@ -84,7 +82,7 @@ public class StatusBarCompat {
         decorView.setSystemUiVisibility(decorView.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
-    public static void cancelLightStatusBar(@NonNull Activity activity) {
+    public static void cancelLightStatusBar( Activity activity) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return;
         }

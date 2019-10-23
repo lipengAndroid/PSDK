@@ -33,7 +33,7 @@ public class GtSdk {
                 ys_user_address_k = "dj";
                 break;
 
-            case " com.ziyi18.wxxh"://紫伊
+            case "com.ziyi18.wxxh"://紫伊
             case "com.ziyi18.shortvideo":
             case "com.ziyi.watercamera":
             case "com.gtdev5.call_flash4":
@@ -102,6 +102,7 @@ public class GtSdk {
             case "com.xindihe.watercamera":
             case "com.xindihe.zgjt2":
                 api = "xindihe.xindihe.cn";
+                ys_user_address_k = "pub";
                 break;
             case "com.geetol.sleep"://集拓信息
                 api = "xinxi.gtxinxi.cn";

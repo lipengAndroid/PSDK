@@ -3,6 +3,7 @@ package com.geetol.mylibrary.Utils;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 
+
 import androidx.annotation.LayoutRes;
 
 import com.geetol.mylibrary.Dialog.DefDialog;
@@ -48,22 +49,60 @@ public class UserPrivacyUtils implements DialogInterFaceForAgreement {
             RegUtils.getMy().run(face);
         } else if (GtSdk.contexts != null) {
             switch (GtSdk.contexts.getPackageName()) {
-                case "com.dunjiakj.makename"://遁甲
+                case "com.dunjiakj.lgwx"://遁甲
+                case "com.dunjiakj.shortvideo":
+                case "com.gtdev5.caller_flashover":
+                case "com.dunjiakj.fakecall":
+                case "com.dunjiakj.djlock":
+                case "com.dunjiakj.newqqlock":
+                case "com.gtdev5.qqlock":
+                case "com.dunjiakj.children_stories":
+                case "com.dunjiakj.yjzfks":
                 case "com.geetol.fond.dream":
+                case "com.dunjiakj.makename":
                     new DunJiaDialog(this).show();
                     break;
-                case "com.junruy.makename":// 君如意
+                case "com.junruy.virtualapp"://君如意
+                case "com.junruy.we_king_of_funs":
+                case "com.jry.watercamera":
+                case "com.softwarelock.call_flash":
+                case "com.junruy.fakecall":
+                case "com.getv5.softwarelock":
+                case "com.junruy.wechat_creater":
+                case "com.junruy.geetol_yjzf":
+                case "com.junruy.cgfyj":
+                case "com.junruy.makename":
                     new JRYDialog(this).show();
                     break;
-                case "com.qqkj66.makename"://清泉
+                case "com.qqkj66.virtualapp"://清泉
+                case "com.qqkj66.virtuallocation":
+                case "com.qqkj66.shortvideo":
+                case "com.qqkj66.watercamera":
+                case "com.gtdev5.wx_applock":
+                case "com.gtdev5.wsjtw":
                 case "com.qqkj66.easysleep":
+                case "com.qqkj66.makename":
                     new QingQuanDialog(this).show();
                     break;
-                case "com.ziyi18.geemakename"://紫伊
+                case " com.ziyi18.wxxh"://紫伊
+                case "com.ziyi18.shortvideo":
+                case "com.ziyi.watercamera":
+                case "com.gtdev5.call_flash4":
+                case "com.ziyi18.babytale/com.ziyi18.bbgs":
+                case "com.ziyi18.geetol_yjzf":
                 case "com.com.ziyi18.goodsleep":
+                case "com.ziyi18.geemakename":
                     new ZiYiDialog(this).show();
                     break;
-                case "com.gtdev5.indulgelock"://哼哈
+                case "com.hehax.wzxg"://哼哈
+                case "com.hehax.wesourceutils":
+                case "com.hehax.shortvideo":
+                case "com.hehax.fakecall":
+                case "com.gtdev5.indulgelock":
+                case "com.hehax.creater":
+                case "com.hehax.chat_create_shot":
+                case "com.hehax.thgs":
+                case "com.hehax.cygs/com.hehax.cygsdq":
                     new HengHaDialog(this).show();
                     break;
                 case "com.geetol.sleep":// 集拓信息
