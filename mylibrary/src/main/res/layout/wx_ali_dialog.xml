@@ -46,9 +46,17 @@
                         android:src="@drawable/ali" />
 
                     <TextView
+                        android:id="@+id/ali_p"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:textColor="@color/color_rad"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
                         android:text="支付宝" />
                 </LinearLayout>
 
@@ -69,6 +77,15 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@drawable/wx" />
+
+                    <TextView
+                        android:id="@+id/wx_p"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text=""
+                        android:textColor="@color/color_rad"
+                        android:visibility="gone" />
 
                     <TextView
                         android:layout_width="wrap_content"
