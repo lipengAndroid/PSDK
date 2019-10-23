@@ -15,6 +15,7 @@ import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.TalenHttpUtils;
 import com.geetol.mylibrary.databinding.WxAliDialogBinding;
 import com.gtdev5.geetolsdk.mylibrary.beans.ApliyBean;
+import com.gtdev5.geetolsdk.mylibrary.beans.Gds;
 import com.gtdev5.geetolsdk.mylibrary.beans.OdResultBean;
 import com.gtdev5.geetolsdk.mylibrary.beans.PayResult;
 import com.gtdev5.geetolsdk.mylibrary.beans.UpdateBean;
@@ -52,19 +53,19 @@ public class PlayDialog {
 
     private PlayOkInterface playOk;
 
-    public Dialog show(Activity context, int vipId, PlayOkInterface playOk) {
+    public Dialog show(Activity context, int position, PlayOkInterface playOk) {
         this.playOk = playOk;
         Dialog dialog = null;
         if (AppDataModel.getInstance() != null &&
                 AppDataModel.getInstance().getGds() != null &&
                 AppDataModel.getInstance().getGds().size() > 0) {
 
-            if (AppDataModel.getInstance().getGds().get(vipId).getPayway().equals("[1]")) {//微信
-                wxPlay(context, vipId);
-            } else if (AppDataModel.getInstance().getGds().get(vipId).getPayway().equals("[2]")) {//支付宝
-                pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context);
-            } else if (AppDataModel.getInstance().getGds().get(vipId).getPayway().contains("[1]")
-                    && AppDataModel.getInstance().getGds().get(vipId).getPayway().contains("[2]")) {
+            if (AppDataModel.getInstance().getGds().get(position).getPayway().equals("[1]")) {//微信
+                wxPlay(context, position);
+            } else if (AppDataModel.getInstance().getGds().get(position).getPayway().equals("[2]")) {//支付宝
+                pay(AppDataModel.getInstance().getGds().get(position).getGid(), context);
+            } else if (AppDataModel.getInstance().getGds().get(position).getPayway().contains("[1]")
+                    && AppDataModel.getInstance().getGds().get(position).getPayway().contains("[2]")) {
                 dialog = new Dialog(context, R.style.dialog_custom);
                 dialog.setContentView(lay);
                 Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
@@ -72,8 +73,8 @@ public class PlayDialog {
                 WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
                 layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
                 dialog.getWindow().setAttributes(layoutParams);
-                dialog.findViewById(R.id.ali).setOnClickListener(v -> pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context));
-                dialog.findViewById(R.id.wx).setOnClickListener(v -> wxPlay(context, vipId));
+                dialog.findViewById(R.id.ali).setOnClickListener(v -> pay(AppDataModel.getInstance().getGds().get(position).getGid(), context));
+                dialog.findViewById(R.id.wx).setOnClickListener(v -> wxPlay(context, position));
                 dialog.show();
 
             }
@@ -83,6 +84,39 @@ public class PlayDialog {
 
         return dialog;
     }
+
+    public Dialog showGjb(Activity context, Gds gds, PlayOkInterface playOk) {
+        this.playOk = playOk;
+        Dialog dialog = null;
+        if (AppDataModel.getInstance() != null &&
+                AppDataModel.getInstance().getGds() != null &&
+                AppDataModel.getInstance().getGds().size() > 0) {
+
+            if (gds.getPayway().equals("[1]")) {//微信
+                wxPlay(context,gds.getGid());
+            } else if (gds.getPayway().equals("[2]")) {//支付宝
+                pay(gds.getGid(), context);
+            } else if (gds.getPayway().contains("[1]")
+                    && gds.getPayway().contains("[2]")) {
+                dialog = new Dialog(context, R.style.dialog_custom);
+                dialog.setContentView(lay);
+                Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
+
+                WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+                dialog.getWindow().setAttributes(layoutParams);
+                dialog.findViewById(R.id.ali).setOnClickListener(v -> pay(gds.getGid(), context));
+                dialog.findViewById(R.id.wx).setOnClickListener(v -> wxPlay(context, gds.getGid()));
+                dialog.show();
+
+            }
+        } else {
+            ToastUtils.showLongToast("goods信息为空");
+        }
+
+        return dialog;
+    }
+
 
     private void wxPlay(Activity context, int vipId) {
 
