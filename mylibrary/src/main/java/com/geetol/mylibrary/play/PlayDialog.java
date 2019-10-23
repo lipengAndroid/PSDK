@@ -55,7 +55,8 @@ public class PlayDialog {
 
     public Dialog show(Activity context, int position, PlayOkInterface playOk) {
         this.playOk = playOk;
-        Dialog dialog = null;
+        dialog = new Dialog(context, R.style.dialog_custom);
+        dialog.setContentView(lay);
         if (AppDataModel.getInstance() != null &&
                 AppDataModel.getInstance().getGds() != null &&
                 AppDataModel.getInstance().getGds().size() > 0) {
@@ -66,8 +67,6 @@ public class PlayDialog {
                 pay(AppDataModel.getInstance().getGds().get(position).getGid(), context);
             } else if (AppDataModel.getInstance().getGds().get(position).getPayway().contains("[1]")
                     && AppDataModel.getInstance().getGds().get(position).getPayway().contains("[2]")) {
-                dialog = new Dialog(context, R.style.dialog_custom);
-                dialog.setContentView(lay);
                 Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
 
                 WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
@@ -85,33 +84,27 @@ public class PlayDialog {
         return dialog;
     }
 
+    private Dialog dialog;
+
     public Dialog showGjb(Activity context, Gds gds, PlayOkInterface playOk) {
         this.playOk = playOk;
-        Dialog dialog = null;
-        if (AppDataModel.getInstance() != null &&
-                AppDataModel.getInstance().getGds() != null &&
-                AppDataModel.getInstance().getGds().size() > 0) {
+        dialog = new Dialog(context, R.style.dialog_custom);
+        dialog.setContentView(lay);
+        if (gds.getPayway().equals("[1]")) {//微信
+            wxPlay(context, gds.getGid());
+        } else if (gds.getPayway().equals("[2]")) {//支付宝
+            pay(gds.getGid(), context);
+        } else if (gds.getPayway().contains("[1]")
+                && gds.getPayway().contains("[2]")) {
 
-            if (gds.getPayway().equals("[1]")) {//微信
-                wxPlay(context,gds.getGid());
-            } else if (gds.getPayway().equals("[2]")) {//支付宝
-                pay(gds.getGid(), context);
-            } else if (gds.getPayway().contains("[1]")
-                    && gds.getPayway().contains("[2]")) {
-                dialog = new Dialog(context, R.style.dialog_custom);
-                dialog.setContentView(lay);
-                Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
+            Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
 
-                WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-                dialog.getWindow().setAttributes(layoutParams);
-                dialog.findViewById(R.id.ali).setOnClickListener(v -> pay(gds.getGid(), context));
-                dialog.findViewById(R.id.wx).setOnClickListener(v -> wxPlay(context, gds.getGid()));
-                dialog.show();
-
-            }
-        } else {
-            ToastUtils.showLongToast("goods信息为空");
+            WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+            dialog.getWindow().setAttributes(layoutParams);
+            dialog.findViewById(R.id.ali).setOnClickListener(v -> pay(gds.getGid(), context));
+            dialog.findViewById(R.id.wx).setOnClickListener(v -> wxPlay(context, gds.getGid()));
+            dialog.show();
         }
 
         return dialog;
