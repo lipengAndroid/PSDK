@@ -52,8 +52,9 @@ public class PlayDialog {
 
     private PlayOkInterface playOk;
 
-    public void show(Activity context, int vipId, PlayOkInterface playOk) {
+    public Dialog show(Activity context, int vipId, PlayOkInterface playOk) {
         this.playOk = playOk;
+        Dialog dialog = null;
         if (AppDataModel.getInstance() != null &&
                 AppDataModel.getInstance().getGds() != null &&
                 AppDataModel.getInstance().getGds().size() > 0) {
@@ -64,7 +65,7 @@ public class PlayDialog {
                 pay(AppDataModel.getInstance().getGds().get(vipId).getGid(), context);
             } else if (AppDataModel.getInstance().getGds().get(vipId).getPayway().contains("[1]")
                     && AppDataModel.getInstance().getGds().get(vipId).getPayway().contains("[2]")) {
-                Dialog dialog = new Dialog(context, R.style.dialog_custom);
+                dialog = new Dialog(context, R.style.dialog_custom);
                 dialog.setContentView(lay);
                 Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
 
@@ -79,6 +80,8 @@ public class PlayDialog {
         } else {
             ToastUtils.showLongToast("goods信息为空");
         }
+
+        return dialog;
     }
 
     private void wxPlay(Activity context, int vipId) {
