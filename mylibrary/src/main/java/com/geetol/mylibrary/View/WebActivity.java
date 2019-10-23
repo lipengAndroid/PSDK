@@ -25,7 +25,11 @@ public class WebActivity extends AppCompatActivity {
     private TextView title;
     private WebView web;
 
-    public static void start(Context context, String uri, String title, int color) {
+    public static String color;
+
+    public static WebActivity activity;
+
+    public static void start(Context context, String uri, String title, String color) {
         context.startActivity(new Intent(context, WebActivity.class)
                 .putExtra(KEY.URI, uri)
                 .setFlags(FLAG_ACTIVITY_NEW_TASK)
@@ -44,11 +48,12 @@ public class WebActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.web_activity);
+        activity = this;
         title = findViewById(R.id.title);
         web = findViewById(R.id.web);
-        if (Build.VERSION.SDK_INT >= 19) {
-            StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.life_lay_blue));
-        }
+//        if (Build.VERSION.SDK_INT >= 19) {
+//            StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.life_lay_blue));
+//        }
         if (getIntent().hasExtra(KEY.TITLE)) {
             title.setText(getIntent().getStringExtra(KEY.TITLE));
         }
@@ -56,9 +61,14 @@ public class WebActivity extends AppCompatActivity {
             web.loadUrl(getIntent().getStringExtra(KEY.URI));
         }
         if (getIntent().hasExtra(KEY.COLOR)) {
-            title.setBackgroundResource(getIntent().getIntExtra(KEY.COLOR, R.color.life_lay_blue));
+            title.setBackgroundColor(Color.parseColor("#4288FB"));
             if (Build.VERSION.SDK_INT >= 19) {
-                StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.life_lay_blue));
+                StatusBarCompat.setStatusBarColor(this, Color.parseColor("#4288FB"));
+            }
+        } else if (color != null) {
+            title.setBackgroundColor(Color.parseColor(color));
+            if (Build.VERSION.SDK_INT >= 19) {
+                StatusBarCompat.setStatusBarColor(this, Color.parseColor(color));
             }
         }
     }
