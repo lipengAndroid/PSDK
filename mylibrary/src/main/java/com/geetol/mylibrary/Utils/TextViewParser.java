@@ -48,6 +48,7 @@ public class TextViewParser {
     }
 
 
+
     public TextViewParser setTxt(String text, int size, String color) {
 
         TextBean bean = new TextBean();
@@ -65,7 +66,7 @@ public class TextViewParser {
         TextBean bean = new TextBean();
         bean.text = text;
         bean.size = DpiUtils.dip2px(size);
-        bean.color = ContextCompat.getColor(GtSdk.contexts, color);
+        bean.color = color;
         textList.add(bean);
         bean.onClickListener = onClickListener;
         return this;
