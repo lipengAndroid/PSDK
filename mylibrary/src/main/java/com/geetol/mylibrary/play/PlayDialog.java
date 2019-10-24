@@ -2,11 +2,15 @@ package com.geetol.mylibrary.play;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -83,6 +87,24 @@ public class PlayDialog {
                 dialog.getWindow().setAttributes(layoutParams);
                 dialog.findViewById(R.id.ali).setOnClickListener(v -> pay(gds.getGid(), context));
                 dialog.findViewById(R.id.wx).setOnClickListener(v -> wxPlay(context, position));
+
+
+                Window window = dialog.getWindow();
+
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(Color.parseColor("#00000000"));
+                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    ViewGroup mContentView = window.findViewById(Window.ID_ANDROID_CONTENT);
+                    View mChildView = mContentView.getChildAt(0);
+                    if (mChildView != null) {
+                        mChildView.setFitsSystemWindows(false);
+                        mChildView.requestApplyInsets();
+                    }
+                }
+                WindowManager.LayoutParams lp = window.getAttributes();
+                lp.dimAmount = 0f;
                 try {
                     TextView wx = dialog.findViewById(R.id.wx_p);
                     TextView ali = dialog.findViewById(R.id.ali_p);
