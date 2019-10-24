@@ -88,7 +88,8 @@ public class UserPrivacyUtils implements DialogInterFaceForAgreement {
                 case "com.ziyi18.shortvideo":
                 case "com.ziyi.watercamera":
                 case "com.gtdev5.call_flash4":
-                case "com.ziyi18.babytale/com.ziyi18.bbgs":
+                case "com.ziyi18.babytale":
+                case "com.ziyi18.bbgs":
                 case "com.ziyi18.geetol_yjzf":
                 case "com.com.ziyi18.goodsleep":
                 case "com.ziyi18.geemakename":
@@ -102,7 +103,8 @@ public class UserPrivacyUtils implements DialogInterFaceForAgreement {
                 case "com.hehax.creater":
                 case "com.hehax.chat_create_shot":
                 case "com.hehax.thgs":
-                case "com.hehax.cygs/com.hehax.cygsdq":
+                case "com.hehax.cygs":
+                case "com.hehax.cygsdq":
                     new HengHaDialog(this).show();
                     break;
                 case "com.geetol.sleep":// 集拓信息
