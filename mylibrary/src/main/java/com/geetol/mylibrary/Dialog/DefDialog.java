@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import com.geetol.mylibrary.Dialog.buli.BlurDialog;
 import com.geetol.mylibrary.InterFace.DialogInterFaceForAgreement;
 import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.GtSdk;
@@ -15,7 +16,7 @@ import static com.geetol.mylibrary.Utils.GtSdk.user_address_v;
 import static com.geetol.mylibrary.Utils.GtSdk.ys_address_v;
 
 
-public class DefDialog extends Dialog {
+public class DefDialog extends BlurDialog {
 
     /**
      * 默认弹窗

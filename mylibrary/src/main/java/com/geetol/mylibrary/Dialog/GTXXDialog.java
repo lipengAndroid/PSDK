@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
+import com.geetol.mylibrary.Dialog.buli.BlurDialog;
 import com.geetol.mylibrary.InterFace.DialogInterFaceForAgreement;
 import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.GtSdk;
@@ -23,7 +24,7 @@ import static com.geetol.mylibrary.Utils.GtSdk.ys_address_v;
  * 用户协议对话框
  */
 
-public class GTXXDialog extends Dialog implements View.OnClickListener {
+public class GTXXDialog extends BlurDialog implements View.OnClickListener {
 
 
     private DialogInterFaceForAgreement listener;

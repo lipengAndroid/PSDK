@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 
 import com.alipay.sdk.app.PayTask;
+import com.geetol.mylibrary.Dialog.buli.BlurDialog;
 import com.geetol.mylibrary.Entity.AppDataModel;
 import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.TalenHttpUtils;
@@ -66,9 +67,9 @@ public class PlayDialog {
 
     private PlayOkInterface playOk;
 
-    public Dialog show(Activity context, int position, PlayOkInterface playOk) {
+    public BlurDialog show(Activity context, int position, PlayOkInterface playOk) {
         this.playOk = playOk;
-        dialog = new Dialog(context, R.style.dialog_custom);
+        dialog = new BlurDialog(context, R.style.dialog_custom);
         dialog.setContentView(lay);
         if (AppDataModel.getInstance() != null &&
                 AppDataModel.getInstance().getGds() != null &&
@@ -89,22 +90,7 @@ public class PlayDialog {
                 dialog.findViewById(R.id.wx).setOnClickListener(v -> wxPlay(context, position));
 
 
-                Window window = dialog.getWindow();
 
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                    window.setStatusBarColor(Color.parseColor("#00000000"));
-                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-                    ViewGroup mContentView = window.findViewById(Window.ID_ANDROID_CONTENT);
-                    View mChildView = mContentView.getChildAt(0);
-                    if (mChildView != null) {
-                        mChildView.setFitsSystemWindows(false);
-                        mChildView.requestApplyInsets();
-                    }
-                }
-                WindowManager.LayoutParams lp = window.getAttributes();
-                lp.dimAmount = 0f;
                 try {
                     TextView wx = dialog.findViewById(R.id.wx_p);
                     TextView ali = dialog.findViewById(R.id.ali_p);
@@ -126,11 +112,11 @@ public class PlayDialog {
         return dialog;
     }
 
-    private Dialog dialog;
+    private BlurDialog dialog;
 
-    public Dialog showGjb(Activity context, Gds gds, PlayOkInterface playOk) {
+    public BlurDialog showGjb(Activity context, Gds gds, PlayOkInterface playOk) {
         this.playOk = playOk;
-        dialog = new Dialog(context, R.style.dialog_custom);
+        dialog = new BlurDialog(context, R.style.dialog_custom);
         dialog.setContentView(lay);
         if (gds.getPayway().equals("[1]")) {//微信
             wxPlay(context, gds.getGid());

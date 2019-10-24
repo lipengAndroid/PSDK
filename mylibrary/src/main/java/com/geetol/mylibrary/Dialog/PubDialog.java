@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 
+import com.geetol.mylibrary.Dialog.buli.BlurDialog;
 import com.geetol.mylibrary.InterFace.DialogInterFaceForAgreement;
 import com.geetol.mylibrary.R;
 import com.geetol.mylibrary.Utils.GtSdk;
@@ -16,7 +17,7 @@ import static com.geetol.mylibrary.Utils.GtSdk.user_address_v;
 import static com.geetol.mylibrary.Utils.GtSdk.ys_address_v;
 
 
-public class PubDialog extends Dialog {
+public class PubDialog extends BlurDialog {
 
     /**
      * 紫伊 清泉 哼哈  弹窗公共类
