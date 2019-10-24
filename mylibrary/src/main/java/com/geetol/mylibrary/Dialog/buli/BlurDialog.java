@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 
 import com.geetol.mylibrary.R;
 
+import static com.geetol.mylibrary.Utils.GtSdk.Gauss;
+
 
 public class BlurDialog extends Dialog {
 
@@ -35,7 +37,7 @@ public class BlurDialog extends Dialog {
 
     private void init(Context context) {
         Activity activity = getActivityFromContext(context);
-        if (activity == null) {
+        if (activity == null || !Gauss) {
             Log.e("BlurDialog", "context is not a Activity Context......");
             return;
         }
@@ -62,7 +64,7 @@ public class BlurDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (mBlurView != null) {
+        if (mBlurView != null && Gauss) {
             mBlurView.blur();
         }
     }
@@ -70,7 +72,7 @@ public class BlurDialog extends Dialog {
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (mBlurView != null) {
+        if (mBlurView != null && Gauss) {
             mBlurView.show();
         }
     }
@@ -78,7 +80,7 @@ public class BlurDialog extends Dialog {
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (mBlurView != null) {
+        if (mBlurView != null && Gauss) {
             mBlurView.hide();
         }
     }

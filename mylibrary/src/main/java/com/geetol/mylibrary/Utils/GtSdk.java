@@ -8,6 +8,8 @@ public class GtSdk {
 
     public static Context contexts;
 
+    public static boolean Gauss = false;
+
     public static String api = "";
     public static String ys_user_address_k;
 
