@@ -16,7 +16,7 @@ import com.geetol.mylibrary.R;
 
 public class BlurDialog extends Dialog {
 
-    protected BlurView mBlurView;
+    private BlurView mBlurView;
 
     public BlurDialog(@NonNull Context context) {
         super(context);
@@ -33,28 +33,28 @@ public class BlurDialog extends Dialog {
         init(context);
     }
 
-    private void init(Context context){
+    private void init(Context context) {
         Activity activity = getActivityFromContext(context);
-        if(activity == null){
+        if (activity == null) {
             Log.e("BlurDialog", "context is not a Activity Context......");
             return;
         }
         ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
         mBlurView = decorView.findViewById(R.id.blur_dialog_bg);
-        if(mBlurView == null){
+        if (mBlurView == null) {
             mBlurView = new BlurView(activity);
             mBlurView.setId(R.id.blur_dialog_bg);
             mBlurView.setAlpha(0f);
-            decorView.addView(mBlurView, new ViewGroup.LayoutParams(-1,-1));
+            decorView.addView(mBlurView, new ViewGroup.LayoutParams(1, 1));
         }
     }
 
-    private Activity getActivityFromContext(Context context){
+    private Activity getActivityFromContext(Context context) {
         while (context instanceof ContextWrapper) {
             if (context instanceof Activity) {
-                return (Activity)context;
+                return (Activity) context;
             }
-            context = ((ContextWrapper)context).getBaseContext();
+            context = ((ContextWrapper) context).getBaseContext();
         }
         return null;
     }
@@ -62,7 +62,7 @@ public class BlurDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(mBlurView != null) {
+        if (mBlurView != null) {
             mBlurView.blur();
         }
     }
@@ -70,7 +70,7 @@ public class BlurDialog extends Dialog {
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if(mBlurView != null) {
+        if (mBlurView != null) {
             mBlurView.show();
         }
     }
@@ -78,7 +78,7 @@ public class BlurDialog extends Dialog {
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if(mBlurView != null) {
+        if (mBlurView != null) {
             mBlurView.hide();
         }
     }
